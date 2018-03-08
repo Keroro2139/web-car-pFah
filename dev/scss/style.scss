@@ -111,12 +111,12 @@ label {
 		h1 {
 			font-size: 1.75em;
 			color: #fff;
-			margin: 0;
-			padding: 10px 0;
+			margin: 10px 0;
 			transition: all .15s ease-in-out;
 
 			@media (max-width: 480px) {
 				font-size: 1.25em;
+				padding: 13.5px 0;
 			}
 		}
 		@media (max-width: 801px) {
@@ -157,15 +157,40 @@ label {
 		line-height: 30px;
 		font-size: 14px;
 	}
+	h3 {
+		color: #525252;
+		margin: 10px 0;
+	}
 
 	#car {
-		width: 400px;
-		height: auto;
+		width: auto;
+		height: 100%;
+		float: right;
 
 		@media (max-width: 768px) {
-			width: 300px;
-			height: auto;
+			// width: 300px;
+			// height: auto;
 		}
 	}
+	#reserve:active {
+		transform: scale(0.945);
+	}
+}
+
+#fb-icon {
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	text-align: center;
+	cursor: pointer;
+	line-height: 38px;
+	background: #4267B2;
+	transition: all .075s ease-in-out;
+}
+#fb-icon:hover {
+	background: rgb(28, 53, 102);
+}
+#fb-icon:active {
+	transform: scale(0.875);
 }
 

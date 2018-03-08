@@ -31,7 +31,7 @@ const styles = {
         width: '100%',
         height: '300px',
         background: '#F1F1F1',
-        padding: 20,
+        padding: 30,
         display: 'flex',
     },
     cardDetailStyle: {
@@ -43,6 +43,8 @@ const styles = {
         // border: '1px solid #ddd',
         height: '100%',
         width: '70%',
+        padding: 10,
+        marginRight: 30,
     },
 }
 

@@ -3,6 +3,7 @@ import React from 'react';
 import Navigation from '../containers/Navigation';
 import CarFilter from '../containers/Car-filter';
 import CarList from '../containers/Car-List';
+import Contact from './Contact';
 
 import { Button, Row, Col } from 'antd';
 
@@ -37,6 +38,7 @@ const Home = (props) => {
                 </Col>
             </Row>
 
+            <Contact></Contact>
 
 
 

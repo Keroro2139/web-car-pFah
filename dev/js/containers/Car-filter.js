@@ -9,9 +9,7 @@ const RadioGroup = Radio.Group;
 class CarFilter extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            gear: 'automatic',
-        }
+
         this.handleChangeGear = this.handleChangeGear.bind(this);
     }
     handleChangeGear(event) {
@@ -22,9 +20,10 @@ class CarFilter extends Component {
         // console.log(this.state.gear)
         return (
             <div>
-                <RadioGroup onChange={this.handleChangeGear} value={this.state.gear}>
-                    <Radio value={'automatic'}>Automatic transmission</Radio>
-                    <Radio value={'manual'}>Manual transmission</Radio>
+                <RadioGroup onChange={this.handleChangeGear}>
+                    <Radio value={'Automatic'}>Automatic transmission</Radio>
+                    <Radio value={'Manual'}>Manual transmission</Radio>
+                    <Radio value={'All'}>All</Radio>
                 </RadioGroup>
             </div>
         )
