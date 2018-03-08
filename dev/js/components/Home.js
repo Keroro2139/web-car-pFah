@@ -10,27 +10,35 @@ const Home = (props) => {
     return (
         <div>
             <Navigation />
-            <Row style={{ paddingTop: 100 }}>
-                <Col md={{ span: 20, offset: 2 }} sm={{ span: 20, offset: 2 }} xs={{ span: 20, offset: 2 }} style={styles.bgPresent}>
-                    <img id='bg-present' src="../../images/bg-present.jpg" alt="bg-present" />
-                    <hr/>
-                </Col>
-            </Row>
-            <Row style={{ paddingTop: 100 }}>
-                <Col md={{ span: 20, offset: 2 }} sm={{ span: 20, offset: 2 }} xs={{ span: 20, offset: 2 }}>
+
+            <Row>
+                <Col
+                    md={{ span: 20, offset: 2 }}
+                    sm={{ span: 20, offset: 2 }}
+                    xs={{ span: 20, offset: 2 }}
+                    lg={{ span: 16, offset: 4 }}
+                >
                     <h1 style={{
-                        marginBottom: 15,
-                        marginLeft: 10,
-                        color: '#29437C',
-                    }}>Car</h1>
+                        margin: '20px 5px',
+                        letterSpacing: '1px',
+                        color: '#C62525',
+                    }}>Rent car</h1>
                     <CarFilter />
                 </Col>
             </Row>
-            <Row style={{ paddingBottom: 100 }}>
-                <Col md={{ span: 20, offset: 2 }} sm={{ span: 20, offset: 2 }} xs={{ span: 20, offset: 2 }}>
+            <Row>
+                <Col
+                    md={{ span: 20, offset: 2 }}
+                    sm={{ span: 20, offset: 2 }}
+                    xs={{ span: 20, offset: 2 }}
+                    lg={{ span: 16, offset: 4 }}
+                >
                     <CarList />
                 </Col>
             </Row>
+
+
+
 
         </div>
     )

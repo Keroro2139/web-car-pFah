@@ -3,41 +3,29 @@ import { connect } from 'react-redux';
 
 import { selectGearType, selectBrand } from '../actions/index';
 
-import { Select } from 'antd';
-const Option = Select.Option;
+import { Radio } from 'antd';
+const RadioGroup = Radio.Group;
 
 class CarFilter extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            gear: 'automatic',
+        }
+        this.handleChangeGear = this.handleChangeGear.bind(this);
     }
-
-    handleSelectGear(value) {
-        this.props.selectGearType(value)
+    handleChangeGear(event) {
+        this.setState({ gear: event.target.value })
+        this.props.selectGearType(event.target.value)
     }
-
-    handleSelectBrand(value) {
-        this.props.selectBrand(value);
-    }
-
     render() {
+        // console.log(this.state.gear)
         return (
             <div>
-                <Select
-                    onChange={this.handleSelectGear.bind(this)}
-                    placeholder="Select a gear type"
-                    style={{ width: 155, margin: '8px 8px' }}>
-                    <Option value="automatic">Automatic</Option>
-                    <Option value="manual">Manual</Option>
-                    <Option value="all">All</Option>
-                </Select>
-                <Select
-                    onChange={this.handleSelectBrand.bind(this)}
-                    placeholder="Select a brand"
-                    style={{ width: 140, margin: '8px 8px' }}>
-                    <Option value="honda">Honda</Option>
-                    <Option value="toyota">Toyota</Option>
-                    <Option value="all">All</Option>
-                </Select>
+                <RadioGroup onChange={this.handleChangeGear} value={this.state.gear}>
+                    <Radio value={'automatic'}>Automatic transmission</Radio>
+                    <Radio value={'manual'}>Manual transmission</Radio>
+                </RadioGroup>
             </div>
         )
     }
