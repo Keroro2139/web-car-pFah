@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { product } from '../../data/Car';
-import { Card } from '../../aob_modules/Card';
+import { Card, CardDetail, CardImage } from '../../aob_modules/Card';
 
+import { FaShoppingBag, FaAutomobile, FaStreetView, FaCogs, FaDashboard } from 'react-icons/lib/fa'
 import { Button } from 'antd';
 
 
@@ -15,28 +16,30 @@ class CarList extends Component {
         }
     }
 
-
     render() {
         // console.log(product);
         // console.log(this.props.gearType);
-
-
         const carList = [];
         for (var i = 0; i < product.length; i++) {
             carList[i] = product[i];
         }
 
         return (
-            <div style={{ paddingTop: 25 }}>
+            <div style={{ paddingTop: 25 }} id='car-list'>
                 {
                     carList.map((data, i) =>
                         <div key={i} style={{ marginBottom: 50 }}>
                             <Card>
-                                <h5>{data.title}, {data.gen}</h5>
-                                <h5>{data.enginePower}</h5>
-                                <h5>{data.gear}</h5>
-                                <h5>{data.seat}</h5>
-                                <h5>{data.bag}</h5>
+                                <CardDetail>
+                                    <p><FaAutomobile style={{ fontSize: 16 }} />&nbsp;&nbsp;&nbsp;{data.title}, {data.gen}</p>
+                                    <p><FaDashboard style={{ fontSize: 16 }} />&nbsp;&nbsp;&nbsp;{data.enginePower} CC</p>
+                                    <p><FaCogs style={{ fontSize: 16 }} />&nbsp;&nbsp;&nbsp;{data.gear}</p>
+                                    <p><FaStreetView style={{ fontSize: 16 }} />&nbsp;&nbsp;&nbsp;{data.seat} Seats</p>
+                                    <p><FaShoppingBag style={{ fontSize: 16 }} />&nbsp;&nbsp;&nbsp;{data.bag} Bags</p>
+                                </CardDetail>
+                                <CardImage>
+                                    <img id='car' src={data.image} alt="" />
+                                </CardImage>
                             </Card>
                         </div>
                     )

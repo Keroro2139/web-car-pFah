@@ -29,8 +29,8 @@ const Home = (props) => {
             <Row>
                 <Col
                     md={{ span: 20, offset: 2 }}
-                    sm={{ span: 20, offset: 2 }}
-                    xs={{ span: 20, offset: 2 }}
+                    sm={{ span: 24, offset: 0 }}
+                    xs={{ span: 24, offset: 0 }}
                     lg={{ span: 16, offset: 4 }}
                 >
                     <CarList />
