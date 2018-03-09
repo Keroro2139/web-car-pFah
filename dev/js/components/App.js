@@ -2,12 +2,12 @@ import React from 'react';
 
 import '../../scss/style.scss';
 
-import Home from './Home';
+import Page from './Page';
 
 const App = (props) => {
     return (
         <div>
-            <Home />
+            <Page />
         </div>
     )
 }

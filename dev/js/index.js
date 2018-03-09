@@ -25,7 +25,12 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <HashRouter>
+            <Switch>
+                <Route path='/' component={App}></Route>
+                {/* <Route path='/' */}
+            </Switch>
+        </HashRouter>
     </Provider>,
     document.querySelector('#container')
 );

@@ -1,5 +1,5 @@
 export const SELECT_GEAR_TYPE = 'SELECT_GEAR_TYPE'
-export const SELECT_BRAND = 'SELECT_BRAND'
+export const SELECT_CAR = 'SELECT_CAR'
 
 export function selectGearType(gearType) {
     return {
@@ -8,9 +8,9 @@ export function selectGearType(gearType) {
     }
 }
 
-export function selectBrand(brand) {
+export function selectCar(car) {
     return {
-        type: SELECT_BRAND,
-        payload: brand,
+        type: SELECT_CAR,
+        payload: car,
     }
 }

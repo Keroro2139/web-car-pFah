@@ -1,27 +1,46 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { selectCar } from '../actions/index';
 
 import { product } from '../../data/Car';
 import { Card, CardDetail, CardImage } from '../../aob_modules/Card';
-
 import { FaShoppingBag, FaAutomobile, FaStreetView, FaCogs, FaDashboard, FaMoney } from 'react-icons/lib/fa'
+import CardView from '../components/CardView';
 import { Button } from 'antd';
 
 
 class CarList extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            data: [],
-        }
+        this.handleSelectCar = this.handleSelectCar.bind(this)
+    }
+
+    showContact() {
+        document.querySelector('#image-contact').classList.add('active')
+        document.querySelector('.bg-image-contact').classList.add('active')
+        document.querySelector('#close-image-contact').classList.add('active')
+    }
+
+    handleSelectCar(data) {
+        this.props.selectCar(data)
+        document.querySelector('#view').classList.add('active');
+        document.querySelector('#overlay').classList.add('active');
+        document.querySelector('#close-image-contact').classList.add('active')
+    }
+    rmActive() {
+        document.querySelector('#view').classList.remove('active');
+        document.querySelector('#overlay').classList.remove('active');
+        document.querySelector('#close-image-contact').classList.remove('active')
     }
 
     render() {
         // console.log(product);
-        console.log(this.props.gearType);
+        // console.log(this.props.gearType);
         const carList = [];
+        var check = [];
         var found = 0;
         for (var i = 0; i < product.length; i++) {
+            check[i] = false;
             if (this.props.gearType === undefined || this.props.gearType === 'All') {
                 carList[i] = product[i];
                 found++;
@@ -31,35 +50,70 @@ class CarList extends Component {
                 found++;
             }
         }
-        console.log(found);
+        // console.log(found);
+        
+
+        // const image = []
+        // for (var i = 0; i < product.length; i++) {
+        //     var hold = [];
+        //     if (!check[i]) {
+        //         hold.push(product[i])
+        //     }
+        //     check[i] = true;
+        //     for (var j = i + 1; j < product.length; j++) {
+        //         if (product[i].title + product[i].gen === product[j].title + product[j].gen && !check[j]) {
+        //             check[j] = true;
+        //             hold.push(product[j])
+        //         }
+        //     }
+        //     // console.log(hold);
+        //     if (hold.length > 0) {
+        //         image.push(hold)
+        //     }
+
+        // }
+        // console.log('Image:', image);
 
 
         return (
-            <div>
-                <div style={{ paddingTop: 25 }} id='car-list'>
-                    <h3>Found {found}</h3>
-                    {
-                        carList.map((data, i) =>
-                            <div key={i} style={{ marginBottom: 50 }}>
-                                <Card>
-                                    <CardDetail>
-                                        <p><FaAutomobile style={{ fontSize: 16 }} />&nbsp;&nbsp;&nbsp;{data.title}, {data.gen}</p>
-                                        <p><FaDashboard style={{ fontSize: 16 }} />&nbsp;&nbsp;&nbsp;{data.enginePower} CC</p>
-                                        <p><FaCogs style={{ fontSize: 16 }} />&nbsp;&nbsp;&nbsp;{data.gear}</p>
-                                        <p><FaStreetView style={{ fontSize: 16 }} />&nbsp;&nbsp;&nbsp;{data.seat} Seats</p>
-                                        <p><FaShoppingBag style={{ fontSize: 16 }} />&nbsp;&nbsp;&nbsp;{data.bag} Bags</p>
-                                        <p>amount:&nbsp;&nbsp;&nbsp;{data.amount}</p>
-                                        {/* <br/> */}
-                                        <p><FaMoney style={{ fontSize: 16 }} />&nbsp;&nbsp;&nbsp;1,000 Baht / Day</p>
-                                        <Button id='reserve' style={{ background: '#FB6D00', color: '#fff', width: 130 }}>RESERVE</Button>
-                                    </CardDetail>
-                                    <CardImage>
-                                        <img id='car' src={data.image} alt="" />
-                                    </CardImage>
-                                </Card>
-                            </div>
-                        )
-                    }
+            <div id='rentcar'>
+
+                <CardView />
+                <div id='overlay' onClick={this.rmActive}></div>
+
+                <div id='car-list'>
+
+                    <img id='image-contact' src="../../images/bg-present.jpg" alt="" />
+
+                    <div style={{ paddingTop: 25 }} >
+                        <h3>Found {found}</h3>
+                        {
+                            carList.map((data, i) =>
+                                <div key={i} style={{ marginBottom: 50 }}>
+                                    <Card>
+                                        <CardDetail>
+                                            <p><FaAutomobile style={{ fontSize: 16 }} />&nbsp;&nbsp;&nbsp;{data.title}, {data.gen}</p>
+                                            <p><FaDashboard style={{ fontSize: 16 }} />&nbsp;&nbsp;&nbsp;{data.enginePower} CC</p>
+                                            <p><FaCogs style={{ fontSize: 16 }} />&nbsp;&nbsp;&nbsp;{data.gear}</p>
+                                            <p><FaStreetView style={{ fontSize: 16 }} />&nbsp;&nbsp;&nbsp;{data.seat} Seats</p>
+                                            <p><FaShoppingBag style={{ fontSize: 16 }} />&nbsp;&nbsp;&nbsp;{data.bag} Bags</p>
+                                            {/* <br/> */}
+                                            <p><FaMoney style={{ fontSize: 16 }} />&nbsp;&nbsp;&nbsp;{data.price} Baht / Day</p>
+                                            <Button
+                                                id='btn-contact'
+                                                type='primary'
+                                                onClick={this.showContact}
+                                            >Contact</Button>
+                                        </CardDetail>
+                                        <CardImage>
+                                            <img id='car' onClick={() => this.handleSelectCar(data)} src={data.image} alt="" />
+                                        </CardImage>
+
+                                    </Card>
+                                </div>
+                            )
+                        }
+                    </div>
                 </div>
             </div>
         )
@@ -76,8 +130,7 @@ const styles = {
 function mapStateToProps(state) {
     return {
         gearType: state.CarProps.gearType,
-        brand: state.CarProps.brand
     }
 }
 
-export default connect(mapStateToProps)(CarList);
+export default connect(mapStateToProps, { selectCar })(CarList);

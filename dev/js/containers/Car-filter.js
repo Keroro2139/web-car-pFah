@@ -20,7 +20,7 @@ class CarFilter extends Component {
         // console.log(this.state.gear)
         return (
             <div>
-                <RadioGroup onChange={this.handleChangeGear}>
+                <RadioGroup onChange={this.handleChangeGear} defaultValue={'All'}>
                     <Radio value={'Automatic'}>Automatic transmission</Radio>
                     <Radio value={'Manual'}>Manual transmission</Radio>
                     <Radio value={'All'}>All</Radio>

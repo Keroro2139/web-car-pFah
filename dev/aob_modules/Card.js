@@ -45,6 +45,7 @@ const styles = {
         width: '70%',
         padding: 10,
         marginRight: 30,
+        textAlign: 'center',
     },
 }
 
