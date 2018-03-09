@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import animateScrollTo from 'animated-scroll-to';
 
 class Navigation extends Component {
+    constructor(props) {
+        super(props)
+    }
     componentDidMount() {
         window.addEventListener('resize', () => {
             document.getElementById('bg-sidebar').style.display = '';
@@ -36,7 +39,6 @@ class Navigation extends Component {
     handleClickRentCar() {
         animateScrollTo(document.querySelector('.car').scrollHeight + 25, { speed: 150 });
     }
-
     handleClickContact() {
         animateScrollTo(document.querySelector('.contact'), { speed: 150 });
     }

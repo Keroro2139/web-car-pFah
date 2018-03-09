@@ -4,7 +4,10 @@ import _ from 'lodash';
 
 import { captainProduct } from '../../data/CaptainCar';
 
-import { Carousel } from 'antd';
+function rmActive() {
+    // document.querySelector('#close-image-contact').classList.remove('active')
+    document.querySelector('#view').classList.remove('active')
+}
 
 const CardView = (props) => {
     var title = _.mapValues(props, 'title').car
@@ -18,29 +21,17 @@ const CardView = (props) => {
         }
     }
 
-    // console.log('Captain Product:', image);
-    console.log('Length:', image.length);
-
+    console.log('Image:', image)
 
     return (
-        <div id="view">
-            <Carousel >
+        <div id='view' onClick={rmActive}>
+            <div className="container-image">
                 {
-                    image.length === 1 ?
-                        <Carousel ><div><img id='carView' src={image[0].image} alt="" /></div></ Carousel>
-                        :
-                        image.map((data, i) => {
-                            return (
-                                <div style={{ padding: '0 auto' }} key={i}>
-                                    <img id='carView' src={data.image} alt="" />
-                                </div>
-                            )
-                        })
-
+                    image.map((data, i) =>
+                        <img id='car-image' key={i} src={data.image} alt="" />
+                    )
                 }
-                {/* <div>hello</div> */}
-                
-            </ Carousel>
+            </div>
         </div>
     )
 }

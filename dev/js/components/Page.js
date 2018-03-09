@@ -13,8 +13,7 @@ function closeContact() {
     document.querySelector('#image-contact').classList.remove('active');
     document.querySelector('.bg-image-contact').classList.remove('active');
     document.querySelector('#close-image-contact').classList.remove('active');
-    document.querySelector('#view').classList.remove('active');
-    document.querySelector('#overlay').classList.remove('active');
+    // document.querySelector('#view').classList.remove('active')
 }
 function goToTop() {
     animateScrollTo(0, { speed: 100 })

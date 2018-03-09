@@ -23,13 +23,10 @@ class CarList extends Component {
 
     handleSelectCar(data) {
         this.props.selectCar(data)
-        document.querySelector('#view').classList.add('active');
-        document.querySelector('#overlay').classList.add('active');
-        document.querySelector('#close-image-contact').classList.add('active')
+        document.querySelector('#view').classList.add('active')
+        // document.querySelector('#close-image-contact').classList.add('active')
     }
     rmActive() {
-        document.querySelector('#view').classList.remove('active');
-        document.querySelector('#overlay').classList.remove('active');
         document.querySelector('#close-image-contact').classList.remove('active')
     }
 
@@ -51,35 +48,10 @@ class CarList extends Component {
             }
         }
         // console.log(found);
-        
-
-        // const image = []
-        // for (var i = 0; i < product.length; i++) {
-        //     var hold = [];
-        //     if (!check[i]) {
-        //         hold.push(product[i])
-        //     }
-        //     check[i] = true;
-        //     for (var j = i + 1; j < product.length; j++) {
-        //         if (product[i].title + product[i].gen === product[j].title + product[j].gen && !check[j]) {
-        //             check[j] = true;
-        //             hold.push(product[j])
-        //         }
-        //     }
-        //     // console.log(hold);
-        //     if (hold.length > 0) {
-        //         image.push(hold)
-        //     }
-
-        // }
-        // console.log('Image:', image);
-
-
         return (
             <div id='rentcar'>
 
-                <CardView />
-                <div id='overlay' onClick={this.rmActive}></div>
+                <CardView/>
 
                 <div id='car-list'>
 
